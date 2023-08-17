@@ -1,0 +1,12 @@
+.menu {
+  @apply h-screen w-[60px] bg-[#8257E5] flex flex-col overflow-hidden;
+
+  @media (max-width: 1024px) {
+    @apply h-[60px] w-screen flex-row;
+  }
+
+  .swiper-slide {
+    // Anula os estilos padrões do swiper que impedem o comportamento de SlidesPerView={"auto"}
+    @apply h-[60px] w-[60px];
+  }
+}

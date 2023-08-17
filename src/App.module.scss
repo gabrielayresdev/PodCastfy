@@ -1,0 +1,12 @@
+.app {
+  display: grid;
+  grid-template-columns: auto 10fr 4fr;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    overflow-y: scroll;
+  }
+}

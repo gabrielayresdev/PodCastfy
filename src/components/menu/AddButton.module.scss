@@ -1,0 +1,16 @@
+.add {
+  @apply w-full bg-[#9164FA] aspect-square flex items-center justify-center cursor-pointer;
+  img {
+    @apply w-1/2 m-auto duration-300;
+  }
+
+  &:hover {
+    img {
+      opacity: 0.4;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    @apply w-[60px];
+  }
+}
