@@ -1,5 +1,7 @@
+import { GlobalStorage } from "./contexts/GlobalContext";
+
 function App() {
-  return <div></div>;
+  return <GlobalStorage></GlobalStorage>;
 }
 
 export default App;
