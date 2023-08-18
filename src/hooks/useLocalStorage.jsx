@@ -12,6 +12,7 @@ const useLocalStorage = (key, initial) => {
 
   React.useEffect(() => {
     window.localStorage.setItem(key, state);
+    console.log(state);
   }, [state, key]);
   return { state, setState };
 };

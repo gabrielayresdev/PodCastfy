@@ -1,32 +1,28 @@
 import React from "react";
 import styles from "./PodcastIcon.module.scss";
 import { Link } from "react-router-dom";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import useFetch from "../../hooks/useFetch";
+import { getPodcast } from "../../api";
 
 const PodcastIcon = ({ id }) => {
   const [url, setUrl] = React.useState();
+  const global = React.useContext(GlobalContext);
 
+  const { data, request } = useFetch();
   React.useEffect(() => {
-    async function fetchImg() {
-      const response = await fetch(
-        "https://api.spotify.com/v1/shows/22Wgt4ASeaw8mmoqAWNUn1?market=BR",
-        {
-          headers: {
-            Authorization:
-              "Bearer BQDhm-09PGMWBHtbm1SXZlWw8XuKioJdM9-9qDVYSKeIX4ebbiPKQeoJJWgoDIwMa70M_1s0BB3XwQnarklszuwJOyw2JGoAVQvKi1dfXynHRxideCM",
-          },
-        }
-      );
-      const json = await response.json();
+    const { url, options } = getPodcast(id, global.data.access_token);
+    request(url, options);
+  }, [request, id, global]);
 
-      // Faz com que a url só seja definia após a imagem carregar
-      const img = new Image();
-      img.src = json.images[1].url;
-      img.onload = function () {
-        setUrl(img.src);
-      };
-    }
-    fetchImg();
-  }, []);
+  if (data) {
+    // Faz com que a url só seja definia após a imagem carregar
+    const img = new Image();
+    img.src = data.images[1].url;
+    img.onload = function () {
+      setUrl(img.src);
+    };
+  }
 
   if (id)
     return (

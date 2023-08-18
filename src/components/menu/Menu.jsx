@@ -1,6 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Menu.module.scss";
 import AddButton from "./AddButton";
+
+import PodcastIcon from "./PodcastIcon";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 /* imports do Swiper */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,11 +12,9 @@ import { FreeMode, Mousewheel, Scrollbar } from "swiper/modules";
 
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import PodcastIcon from "./PodcastIcon";
-import { GlobalContext } from "../../contexts/GlobalContext";
 
 const Menu = () => {
-  const { state } = useContext(GlobalContext);
+  const { state } = React.useContext(GlobalContext);
   return (
     <div className={styles.menu}>
       <Swiper
