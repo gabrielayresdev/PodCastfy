@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Menu.module.scss";
 import AddButton from "./AddButton";
 
@@ -9,8 +9,11 @@ import { FreeMode, Mousewheel, Scrollbar } from "swiper/modules";
 
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import PodcastIcon from "./PodcastIcon";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 const Menu = () => {
+  const { state } = useContext(GlobalContext);
   return (
     <div className={styles.menu}>
       <Swiper
@@ -23,81 +26,16 @@ const Menu = () => {
         className="mySwiper"
         spaceBetween={"8px"}
       >
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
-        <SwiperSlide className={styles["swiper-slide"]}>
-          <AddButton />
-        </SwiperSlide>
+        {state
+          ? state.map((id) => (
+              <SwiperSlide key={id} className={styles["swiper-slide"]}>
+                <PodcastIcon id={id} />
+              </SwiperSlide>
+            ))
+          : null}
+        {/* <SwiperSlide className={styles["swiper-slide"]}>
+          <PodcastIcon id={""} />
+        </SwiperSlide> */}
         <SwiperSlide className={styles["swiper-slide"]}>
           <AddButton />
         </SwiperSlide>

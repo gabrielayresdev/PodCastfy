@@ -1,5 +1,5 @@
 .menu {
-  @apply h-screen w-[60px] bg-[#8257E5] flex flex-col overflow-hidden;
+  @apply h-screen w-[60px] py-1 bg-[#8257E5] flex flex-col overflow-hidden;
 
   @media (max-width: 1024px) {
     @apply h-[60px] w-screen flex-row;
