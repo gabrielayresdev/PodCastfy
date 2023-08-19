@@ -3,4 +3,44 @@ export default class Format {
     const x = value.split(",");
     return x;
   }
+
+  static timeFormat(time) {
+    const secTotal = Math.round(time / 1000);
+    const minTotal = Math.floor(secTotal / 60);
+    if (minTotal > 60) {
+      const hours = Math.floor(minTotal / 60);
+
+      return `${hours}h ${minTotal - hours * 60}min`;
+    } else {
+      return `${minTotal}min ${secTotal - minTotal * 60}s`;
+    }
+  }
+
+  static dateFormat(d) {
+    const actualDate = new Date();
+    const actualYear = actualDate.getFullYear();
+    const date = new Date(d);
+    const day = date.getDay();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const monthNames = [
+      "jan",
+      "fev",
+      "mar",
+      "abr",
+      "mai",
+      "jun",
+      "jul",
+      "ago",
+      "set",
+      "out",
+      "nov",
+      "dez",
+    ];
+    if (year < actualYear) {
+      return `${monthNames[month]}. de ${year}`;
+    } else {
+      return `${String(day).padStart(2, "0")} de ${monthNames[month]}.`;
+    }
+  }
 }

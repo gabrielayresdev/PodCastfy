@@ -7,15 +7,11 @@ const SearchItem = ({ data, setModal }) => {
   const { state, savePodcast } = React.useContext(GlobalContext);
   const contains = state.includes(id);
 
-  React.useEffect(() => {
-    if (data) {
-      const img = new Image();
-      img.src = data.images[1].url;
-      img.onload = function () {
-        setUrl(img.src);
-      };
-    }
-  }, [data]);
+  const img = new Image();
+  img.src = data.images[1].url;
+  img.onload = function () {
+    setUrl(img.src);
+  };
 
   return (
     <div

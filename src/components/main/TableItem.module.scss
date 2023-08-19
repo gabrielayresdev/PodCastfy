@@ -1,0 +1,15 @@
+.tableItem {
+  display: grid;
+  grid-template-columns: auto 1fr 15ch 15ch auto;
+  align-items: center;
+  gap: 1rem;
+  .image_container {
+    @apply max-w-[40px] aspect-square;
+  }
+  .title {
+    @apply text-black font-semibold;
+  }
+  p {
+    @apply text-[#808080];
+  }
+}
