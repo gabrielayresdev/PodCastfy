@@ -12,7 +12,7 @@ import { FreeMode, Mousewheel, Scrollbar } from "swiper/modules";
 
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Search from "../modal/search";
+import Search from "../modal/Search";
 
 const Menu = () => {
   const { state } = React.useContext(GlobalContext);
