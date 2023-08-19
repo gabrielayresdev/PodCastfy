@@ -61,7 +61,9 @@ const Search = ({ setModal }) => {
           {data &&
             input.length > 0 &&
             data.shows.items.map((show) => {
-              return <SearchItem key={show.id} data={show} />;
+              return (
+                <SearchItem key={show.id} data={show} setModal={setModal} />
+              );
             })}
         </div>
       </div>

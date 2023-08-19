@@ -1,7 +1,16 @@
 .item {
   @apply flex items-start gap-4 py-2 px-2 mx-2 border-t-[1px] border-[#dddddd] first-of-type:border-none rounded-xl cursor-pointer duration-300;
-  img {
-    @apply w-[60px] aspect-square bg-gray-400 block;
+  .image_container {
+    @apply w-[60px] aspect-square bg-gray-400 block relative z-0;
+
+    &.contains::before {
+      content: "";
+      @apply w-full h-full inline-block bg-[#5a5a5a99] z-40 absolute top-0 left-0;
+      background-image: url("/src/assets/check-solid.svg");
+      background-size: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
 
   .text_container {

@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "./SearchItem.module.scss";
-const SearchItem = ({ data }) => {
+import { GlobalContext } from "../../contexts/GlobalContext";
+const SearchItem = ({ data, setModal }) => {
   const [url, setUrl] = React.useState("");
+  const { name, total_episodes, id } = data;
+  const { state, savePodcast } = React.useContext(GlobalContext);
+  const contains = state.includes(id);
 
   React.useEffect(() => {
     if (data) {
@@ -12,14 +16,29 @@ const SearchItem = ({ data }) => {
       };
     }
   }, [data]);
+
   return (
-    <div className={styles.item}>
-      <img src={url ? url : null} alt="" className={styles.loading_animation} />
+    <div
+      className={styles.item}
+      onClick={() => {
+        savePodcast(id);
+        setModal(false);
+      }}
+    >
+      <div
+        className={`${styles.image_container} ${
+          contains ? styles.contains : ""
+        }`}
+      >
+        <img
+          src={url ? url : null}
+          alt=""
+          className={styles.loading_animation}
+        />
+      </div>
       <div className={styles.text_container}>
-        <h2>{data.name}</h2>
-        <p>{`${data.total_episodes} episódio${
-          data.total_episodes > 1 ? "s" : ""
-        }`}</p>
+        <h2>{name}</h2>
+        <p>{`${total_episodes} episódio${total_episodes > 1 ? "s" : ""}`}</p>
       </div>
     </div>
   );

@@ -21,11 +21,15 @@ export const GlobalStorage = ({ children }) => {
     }, 3600000);
   }, [request]);
 
+  function savePodcast(id) {
+    setState([...state, id]);
+  }
+
   // Fazer página de erro
   if (error) return null;
   else if (data)
     return (
-      <GlobalContext.Provider value={{ state, setState, data }}>
+      <GlobalContext.Provider value={{ state, savePodcast, data }}>
         {children}
       </GlobalContext.Provider>
     );
