@@ -10,12 +10,12 @@
     #ededed;
 
   background-size: 200% 100%;
-  background-position-x: 180%;
+  background-position-x: 0%;
   animation: 1s loading ease-in-out infinite;
-}
 
-@keyframes loading {
-  to {
-    background-position-x: -20%;
+  @keyframes loading {
+    to {
+      background-position-x: -20%;
+    }
   }
 }

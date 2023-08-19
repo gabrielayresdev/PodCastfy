@@ -1,0 +1,39 @@
+.item {
+  @apply flex items-start gap-4 py-2 px-2 mx-2 border-t-[1px] border-[#dddddd] first-of-type:border-none rounded-xl cursor-pointer duration-300;
+  img {
+    @apply w-[60px] aspect-square bg-gray-400 block;
+  }
+
+  .text_container {
+    h2 {
+      @apply font-bold font-roboto text-xl text-[#383838] leading-none mb-2 tracking-[1px];
+    }
+    p {
+      @apply font-light font-roboto;
+    }
+  }
+
+  .loading_animation {
+    background: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 60%
+      )
+      #ededed;
+
+    background-size: 200% 100%;
+    background-position-x: 180%;
+    animation: 1s loading ease-in-out infinite;
+  }
+
+  @keyframes loading {
+    to {
+      background-position-x: -20%;
+    }
+  }
+
+  &:hover {
+    @apply bg-[#ddd];
+  }
+}

@@ -28,3 +28,14 @@ export const getPodcast = (id, token) => {
     },
   };
 };
+
+export const search = (name, token) => {
+  return {
+    url: `https://api.spotify.com/v1/search?query=${name}&type=show&market=BR`,
+    options: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
