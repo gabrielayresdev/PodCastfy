@@ -4,6 +4,8 @@ import useFetch from "../../hooks/useFetch";
 import { search } from "../../api";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import SearchItem from "./SearchItem";
+import magnifying from "/src/assets/magnifying-glass-solid.svg";
+import close from "/src/assets/xmark-solid.svg";
 
 const Search = ({ setModal }) => {
   const [input, setInput] = React.useState("");
@@ -25,11 +27,7 @@ const Search = ({ setModal }) => {
     <div className={styles.search_container} onClick={handleClick}>
       <div className={styles.search}>
         <div className={styles.input}>
-          <img
-            src="/src/assets/magnifying-glass-solid.svg"
-            alt=""
-            className={styles.lupa}
-          />
+          <img src={magnifying} alt="" className={styles.lupa} />
           <input
             type="text"
             name="search"
@@ -39,7 +37,7 @@ const Search = ({ setModal }) => {
             onChange={({ target }) => setInput(target.value)}
           />
           <img
-            src="/src/assets/xmark-solid.svg"
+            src={close}
             alt=""
             className={styles.icon}
             onClick={() => setModal(false)}
