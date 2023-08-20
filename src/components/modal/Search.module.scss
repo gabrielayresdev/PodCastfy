@@ -28,6 +28,12 @@
         @apply bg-transparent outline-none border-none w-full font-roboto leading-none tracking-[1px];
       }
     }
+    @media (max-width: 1024px) {
+      @apply w-8/12;
+    }
+    @media (max-width: 748px) {
+      @apply w-full h-5/6 self-end rounded-none;
+    }
 
     .results {
       @apply py-4 flex flex-col;

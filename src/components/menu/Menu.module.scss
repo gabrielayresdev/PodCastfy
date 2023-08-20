@@ -3,10 +3,15 @@
 
   @media (max-width: 1024px) {
     @apply h-[60px] w-screen flex-row;
+    .swiper {
+      margin-left: 8px;
+    }
   }
 
-  .swiper-slide {
-    // Anula os estilos padrões do swiper que impedem o comportamento de SlidesPerView={"auto"}
-    @apply h-[60px] w-[60px];
+  .swiper {
+    .swiper-slide {
+      // Anula os estilos padrões do swiper que impedem o comportamento de SlidesPerView={"auto"}
+      @apply h-[60px] w-[60px];
+    }
   }
 }

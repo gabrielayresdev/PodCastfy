@@ -28,7 +28,7 @@ const Menu = () => {
           scrollbar={true}
           mousewheel={true}
           modules={[FreeMode, Scrollbar, Mousewheel]}
-          className="mySwiper"
+          className={`mySwiper ${styles.swiper}`}
           spaceBetween={"8px"}
         >
           {state

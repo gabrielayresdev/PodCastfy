@@ -1,7 +1,7 @@
 .item {
   @apply flex items-start gap-4 py-2 px-2 mx-2 border-t-[1px] border-[#dddddd] first-of-type:border-none rounded-xl cursor-pointer duration-300;
   .image_container {
-    @apply w-[60px] aspect-square bg-gray-400 block relative z-0;
+    @apply min-w-[60px] max-w-[60px] aspect-square bg-gray-400 block relative z-0;
 
     &.contains::before {
       content: "";

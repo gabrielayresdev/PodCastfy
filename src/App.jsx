@@ -3,6 +3,7 @@ import { GlobalStorage } from "./contexts/GlobalContext";
 import styles from "./App.module.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Podcast from "./components/main/Podcast";
+import Player from "./components/player/Player";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Podcast />} />
             <Route path="/podcast/:id" element={<Podcast />} />
           </Routes>
+          <Player />
         </div>
       </BrowserRouter>
     </GlobalStorage>

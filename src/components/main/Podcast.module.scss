@@ -34,14 +34,14 @@
   }
 
   .episodes {
-    @apply flex flex-col gap-2 ml-[1.5rem] mt-[1.5rem] h-full overflow-auto;
+    @apply flex flex-col gap-2 ml-[1.5rem]  mt-[1.5rem] h-full overflow-auto;
 
     .tableHeader {
       display: grid;
-      grid-template-columns: 1fr 15ch 15ch auto;
+      grid-template-columns: 1fr 15ch 15ch 40px;
       align-items: center;
       gap: 1rem;
-      @apply uppercase font-medium text-[#808080];
+      @apply uppercase font-medium text-[#808080] mr-[1.5rem];
 
       p {
         @apply text-[0.85rem];
