@@ -17,12 +17,30 @@
 
     &:hover {
       background-color: #04d361;
+      border: none;
       svg {
         path {
           fill: #ffffff;
           transition: all 0.5s;
         }
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto 1fr;
+    width: 100%;
+
+    p,
+    .play {
+      display: none;
+    }
+    .title {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-right: 1.5rem;
     }
   }
 }

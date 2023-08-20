@@ -9,8 +9,10 @@ const TableItem = ({ episode }) => {
         <img src={episode.images[2].url} alt="" />
       </div>
       <p className={styles.title}>{episode.name}</p>
-      <p>{Format.dateFormat(episode.release_date)}</p>
-      <p>{Format.timeFormat(episode.duration_ms)}</p>
+      <p className={styles.date}>{Format.dateFormat(episode.release_date)}</p>
+      <p className={styles.duration}>
+        {Format.timeFormat(episode.duration_ms)}
+      </p>
 
       <div className={styles.play}>
         <svg
