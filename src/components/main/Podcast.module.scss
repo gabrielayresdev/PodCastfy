@@ -7,6 +7,22 @@
   @apply bg-[#f9f9f9] h-screen;
   .cover {
     background: setBg(rgba(77, 77, 77, 1));
+    position: relative;
+
+    .remove {
+      @apply w-[40px] p-3 absolute top-1 right-3 duration-300 cursor-pointer rounded-xl;
+      svg {
+        fill: #ff4444;
+        transition: all 0.3s;
+      }
+      &:hover {
+        @apply bg-[#ff4444];
+
+        svg {
+          fill: #fff;
+        }
+      }
+    }
 
     .data {
       @apply flex items-end gap-4 pt-[5.625rem] pb-[2rem] pl-[1.5rem];

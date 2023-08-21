@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Podcast from "./components/main/Podcast";
 import Player from "./components/player/Player";
 import Episode from "./components/main/Episode";
+import Home from "./components/main/Home";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <div className={styles.app}>
           <Menu />
           <Routes>
-            <Route path="/" element={<Podcast />} />
+            <Route path="/" element={<Home />} />
             <Route path="/podcast/:id" element={<Podcast />} />
             <Route path="/episodio/:id" element={<Episode />} />
           </Routes>
