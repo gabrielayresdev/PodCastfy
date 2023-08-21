@@ -4,6 +4,7 @@ import styles from "./App.module.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Podcast from "./components/main/Podcast";
 import Player from "./components/player/Player";
+import Episode from "./components/main/Episode";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Podcast />} />
             <Route path="/podcast/:id" element={<Podcast />} />
+            <Route path="/episodio/:id" element={<Episode />} />
           </Routes>
           <Player />
         </div>

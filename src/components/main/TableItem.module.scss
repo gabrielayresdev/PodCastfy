@@ -3,6 +3,9 @@
   grid-template-columns: auto 1fr 15ch 15ch auto;
   align-items: center;
   gap: 1rem;
+
+  @apply p-2 mr-6 cursor-pointer rounded-lg duration-300;
+
   .image_container {
     @apply max-w-[40px] aspect-square;
   }
@@ -13,7 +16,7 @@
     @apply text-[#808080];
   }
   .play {
-    @apply w-[40px] aspect-square rounded-md border-[1px] border-[#ddd]  mr-[1.5rem] flex items-center justify-center duration-500 cursor-pointer;
+    @apply w-[40px] aspect-square rounded-md border-[1px] border-[#ddd]   flex items-center justify-center duration-500 cursor-pointer;
 
     &:hover {
       background-color: #04d361;
@@ -25,6 +28,10 @@
         }
       }
     }
+  }
+
+  &:hover {
+    @apply bg-[#efefef];
   }
 
   @media (max-width: 768px) {
