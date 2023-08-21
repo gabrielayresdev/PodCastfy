@@ -1,3 +1,53 @@
 .player {
-  @apply h-full w-full bg-[#8257E5];
+  @apply h-full w-full bg-[#8257E5] px-[15%] pt-[3rem] pb-[4rem] flex flex-col justify-between items-center;
+  h2 {
+    @apply text-white font-bold tracking-[1px];
+  }
+
+  .image_container {
+    @apply w-full aspect-square bg-[#9F75FF] flex items-center justify-center text-center text-white font-bold rounded-3xl border-dashed border-[#e6e6e666] border-[2px] tracking-[1px] relative overflow-hidden;
+
+    /* img {
+      @apply w-full h-full absolute z-10 top-0 left-0;
+    } */
+  }
+
+  .bottom {
+    @apply w-full flex flex-col gap-10;
+    .progress {
+      @apply flex items-center gap-3 w-full;
+
+      p {
+        @apply text-white opacity-50;
+      }
+
+      .bar {
+        @apply w-full h-1 block bg-[#9F75FF] cursor-pointer;
+      }
+    }
+
+    .controls {
+      @apply flex items-center justify-between w-full;
+
+      .controls_icon {
+        @apply opacity-50 cursor-pointer duration-300;
+
+        &:hover {
+          @apply opacity-70;
+        }
+
+        &[data-previous] {
+          @apply rotate-180;
+        }
+      }
+
+      .play {
+        @apply opacity-50 cursor-pointer duration-300 p-2 bg-[#9F75FF] rounded-2xl;
+
+        &:hover {
+          @apply opacity-70;
+        }
+      }
+    }
+  }
 }

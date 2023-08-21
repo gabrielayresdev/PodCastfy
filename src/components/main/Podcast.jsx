@@ -13,6 +13,7 @@ const Podcast = () => {
   const global = React.useContext(GlobalContext);
   const [url, setUrl] = React.useState("");
   const [coverStyle, setCoverStyle] = React.useState({});
+  console.log("oi");
 
   React.useEffect(() => {
     const token = global.data.access_token;
@@ -69,6 +70,7 @@ const Podcast = () => {
         </div>
       </div>
     );
+  else return <div>{console.log("oi")}</div>;
 };
 
 export default Podcast;
