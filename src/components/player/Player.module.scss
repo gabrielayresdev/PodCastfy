@@ -1,3 +1,5 @@
+@import "/src/Shared/variables.module.scss";
+
 .player {
   @apply h-full w-full bg-[#8257E5] px-[15%] pt-[3rem] pb-[4rem] flex flex-col justify-between items-center;
   h2 {
@@ -49,5 +51,69 @@
         }
       }
     }
+  }
+
+  @media (max-width: 1024px) {
+    @apply absolute z-50 h-screen min-h-[480px] bottom-0;
+
+    .bottom {
+      @apply gap-4;
+    }
+    animation: 0.5s openPlayer ease-in-out forwards;
+
+    .close {
+      @apply absolute right-0 top-0 px-3 py-2;
+
+      svg {
+        @apply min-w-[20px] fill-[#fff];
+      }
+    }
+
+    &.preview {
+      @apply h-[40px] w-screen min-h-0 flex-row py-8 px-4;
+      animation: none;
+
+      .close {
+        @apply hidden;
+      }
+
+      h2 {
+        @apply hidden;
+      }
+
+      .image_container {
+        @apply w-10 rounded-md border-[#e6e6e6b9];
+
+        p {
+          @apply hidden;
+        }
+      }
+
+      .bottom {
+        @apply w-auto;
+        .progress {
+          @apply hidden;
+        }
+        .controls {
+          @apply w-auto;
+          .controls_icon {
+            @apply hidden;
+          }
+        }
+      }
+    }
+
+    @keyframes openPlayer {
+      from {
+        transform: translateY($initialPlayerPosition);
+      }
+      to {
+        transform: initial;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    @apply py-8;
   }
 }
