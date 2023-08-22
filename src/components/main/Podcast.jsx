@@ -6,6 +6,7 @@ import { getPodcast } from "../../api";
 import styles from "./Podcast.module.scss";
 import getAverageColor from "get-average-color";
 import TableItem from "./TableItem";
+import Loading from "../../helper/Loading";
 
 const Podcast = () => {
   const { id } = useParams();
@@ -47,7 +48,7 @@ const Podcast = () => {
     navigator("/");
   }
 
-  if (loading) return <div>Carregando...</div>;
+  if (loading) return <Loading />;
   if (error) return <div>{error}</div>;
   if (data)
     return (

@@ -2,7 +2,7 @@
   @apply h-screen w-[60px] py-1 bg-[#8257E5] flex flex-col overflow-hidden;
 
   @media (max-width: 1024px) {
-    @apply h-[60px] w-screen flex-row;
+    @apply h-[60px] w-screen flex-row p-0;
     .swiper {
       margin-left: 8px;
     }

@@ -7,6 +7,7 @@ import useFetch from "../../hooks/useFetch";
 import wall from "/src/assets/wall.png";
 import returnIcon from "/src/assets/return.png";
 import Format from "../../helper/format";
+import Loading from "../../helper/Loading";
 
 const Episode = () => {
   const { id } = useParams();
@@ -18,6 +19,7 @@ const Episode = () => {
     request(url, options);
   }, [request, id]);
 
+  if (loading) return <Loading />;
   if (data)
     return (
       <div className={styles.episode}>

@@ -6,10 +6,7 @@ import { getToken } from "../api";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const { state, setState } = useLocalStorage("podcasts", [
-    "22Wgt4ASeaw8mmoqAWNUn1",
-    "2p0Vx75OmfsXktyLBuLuSf",
-  ]);
+  const { state, setState } = useLocalStorage("podcasts", []);
   const { data, error, loading, request } = useFetch();
 
   React.useEffect(() => {
