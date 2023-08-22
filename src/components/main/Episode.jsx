@@ -18,12 +18,6 @@ const Episode = () => {
     request(url, options);
   }, [request, id]);
 
-  if (data) {
-    const d = data.description;
-
-    console.log(d.split("    "));
-  }
-
   if (data)
     return (
       <div className={styles.episode}>
@@ -31,7 +25,7 @@ const Episode = () => {
           <div
             className={styles.return}
             onClick={() => {
-              console.log(history.back());
+              history.back();
             }}
           >
             <img src={returnIcon} alt="" style={{ pointerEvents: "none" }} />

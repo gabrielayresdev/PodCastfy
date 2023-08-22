@@ -17,7 +17,6 @@ const Search = ({ setModal }) => {
       request(url, options);
     }
   }, [input, request, global]);
-  /* console.log(data ? data.shows.items : null); */
 
   function handleClick({ target, currentTarget }) {
     if (target === currentTarget) setModal(false);

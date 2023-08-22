@@ -1,0 +1,18 @@
+.home {
+  @apply w-full h-full flex items-center justify-center gap-1 flex-col;
+
+  .image_container {
+    @apply w-4/12 mb-10;
+  }
+
+  p {
+    @apply text-[#808080] uppercase text-sm;
+  }
+  h2 {
+    @apply text-xl;
+
+    span {
+      @apply text-[#8257E5];
+    }
+  }
+}

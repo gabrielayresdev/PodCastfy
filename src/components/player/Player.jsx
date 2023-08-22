@@ -14,7 +14,6 @@ const Player = () => {
     if (isMobile) {
       if (!isOpen) {
         setIsOpen(true);
-        console.log("oi");
       }
     }
   }
