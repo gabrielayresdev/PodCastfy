@@ -13,6 +13,7 @@ const TableItem = ({ episode }) => {
       navigate(`/episodio/${episode.id}`);
     }
   };
+
   return (
     <div className={styles.tableItem} onClick={handleClick}>
       <div className={styles.image_container}>

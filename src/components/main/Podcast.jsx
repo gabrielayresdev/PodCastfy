@@ -15,13 +15,15 @@ const Podcast = () => {
   const [url, setUrl] = React.useState("");
   const [coverStyle, setCoverStyle] = React.useState({});
   const navigator = useNavigate();
+  const [visible, setVisible] = React.useState(10);
+  const [episodes, setEpisodes] = React.useState([]);
+  const [link, setLink] = React.useState();
 
   React.useEffect(() => {
     if (id) {
       const token = global.data.access_token;
 
       const { url, options } = getPodcast(id, token);
-
       request(url, options);
     }
   }, [request, global, id]);
@@ -48,9 +50,35 @@ const Podcast = () => {
     navigator("/");
   }
 
+  /* Paginação */
+  React.useEffect(() => {
+    if (data && data.href !== link) {
+      setEpisodes((actual) => [...actual, ...data.episodes.items]);
+    }
+    if (data && data.href !== link) setLink(data.href);
+  }, [data, link]);
+
+  async function loadMore() {
+    async function getMoreEpisodes(url, options) {
+      const response = await fetch(url, options);
+      const json = await response.json();
+      return json;
+    }
+    if (data && data.href !== link) setLink(data.href);
+    setVisible((actual) => actual + 10);
+    if (visible > episodes.length * 0.8) {
+      const token = global.data.access_token;
+      const { options } = getPodcast(id, token);
+      const novos = await getMoreEpisodes(data.episodes.next, options);
+      console.log(novos);
+      setEpisodes((actual) => [...actual, ...novos.items]);
+    }
+  }
+
   if (loading) return <Loading />;
   if (error) return <div>{error}</div>;
-  if (data)
+
+  if (episodes && data)
     return (
       <div className={styles.podcast}>
         <div className={styles.cover} style={coverStyle}>
@@ -77,9 +105,12 @@ const Podcast = () => {
             <p>Data</p>
             <p>Duração</p>
           </div>
-          {data.episodes.items.map((episode) => {
+          {episodes.slice(0, visible).map((episode) => {
             return <TableItem key={episode.id} episode={episode} />;
           })}
+          <button onClick={loadMore} className={styles.button}>
+            Carregar mais
+          </button>
         </div>
       </div>
     );

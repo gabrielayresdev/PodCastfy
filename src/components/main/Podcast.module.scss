@@ -4,7 +4,7 @@
   @function setBg($baseColor) {
     @return linear-gradient(180deg, $baseColor 0%, rgb(229, 229, 229) 100%);
   }
-  @apply bg-[#f9f9f9] h-screen;
+  @apply bg-[#f9f9f9] flex flex-col max-h-screen;
   .cover {
     background: setBg(rgba(77, 77, 77, 1));
     position: relative;
@@ -82,6 +82,14 @@
 
       p {
         @apply text-[0.85rem];
+      }
+    }
+
+    .button {
+      @apply py-4 px-10 bg-[#8257E5] text-white my-10 justify-self-center self-center duration-300;
+
+      &:hover {
+        @apply bg-[#9164FA];
       }
     }
 
