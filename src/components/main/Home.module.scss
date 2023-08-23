@@ -1,5 +1,5 @@
 .home {
-  @apply w-full h-screen flex items-center justify-center gap-1 flex-col;
+  @apply w-full h-screen flex items-center justify-center gap-1 flex-col text-center;
 
   .image_container {
     @apply w-4/12 mb-10;
@@ -13,6 +13,14 @@
 
     span {
       @apply text-[#8257E5];
+    }
+  }
+
+  @media (max-width: 768px) {
+    @apply p-8;
+
+    .image_container {
+      @apply w-10/12;
     }
   }
 }
