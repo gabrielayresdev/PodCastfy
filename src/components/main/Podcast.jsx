@@ -58,7 +58,7 @@ const Podcast = () => {
     if (data && data.href !== link) setLink(data.href);
   }, [data, link]);
 
-  async function loadMore() {
+  async function loadMore({ target }) {
     async function getMoreEpisodes(url, options) {
       const response = await fetch(url, options);
       const json = await response.json();
@@ -66,11 +66,14 @@ const Podcast = () => {
     }
     if (data && data.href !== link) setLink(data.href);
     setVisible((actual) => actual + 10);
+    target.disabled = true;
+    setTimeout(() => {
+      target.disabled = false;
+    }, 1000);
     if (visible > episodes.length * 0.8) {
       const token = global.data.access_token;
       const { options } = getPodcast(id, token);
       const novos = await getMoreEpisodes(data.episodes.next, options);
-      console.log(novos);
       setEpisodes((actual) => [...actual, ...novos.items]);
     }
   }
