@@ -17,8 +17,10 @@ const SearchItem = ({ data, setModal }) => {
     <div
       className={styles.item}
       onClick={() => {
-        savePodcast(id);
-        setModal(false);
+        if (!contains) {
+          savePodcast(id);
+          setModal(false);
+        }
       }}
     >
       <div
