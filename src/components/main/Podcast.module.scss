@@ -5,6 +5,10 @@
     @return linear-gradient(180deg, $baseColor 0%, rgb(229, 229, 229) 100%);
   }
   @apply bg-[#f9f9f9] flex flex-col max-h-screen;
+
+  @media (max-width: 1024px) {
+    max-height: max-content;
+  }
   .cover {
     background: setBg(rgba(77, 77, 77, 1));
     position: relative;

@@ -62,7 +62,7 @@
   }
 
   @media (max-width: 1024px) {
-    @apply absolute z-50 h-screen min-h-[480px] bottom-0;
+    @apply sticky z-50 h-screen min-h-[480px] bottom-0;
 
     .bottom {
       @apply gap-4;
