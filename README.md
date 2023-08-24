@@ -6,7 +6,7 @@ O PodCastfy é um website desenvolvido com React, JavaScript, SCSS e Tailwind qu
 
 Caso queira utilizar o site, acesse https://pod-castfy.vercel.app
 
-![Site responsivo. Design adaptável para todas as plataformas](https://github.com/INeonysI/Pokedex/blob/ea8e18337245c7e23407a9b8ebe05e4b90176294/Assets/responsive.png)
+![Site responsivo. Design adaptável para todas as plataformas](/src/assets/readme_images/template.png)
 
 ## Tecnologias
 
@@ -30,6 +30,24 @@ As principais funcionalidades são:
   - Pausar
   - Reproduzir
   - Avançar e voltar o progresso dos episódios
+
+## Layout
+
+### Desktop
+
+![Layout desktop](/src/assets/readme_images/desktop.png)
+![Layout desktop](/src/assets/readme_images/desktop2.png)
+![Layout desktop](/src/assets/readme_images/desktop3.png)
+
+### Tablet
+
+![Layout tablet](/src/assets/readme_images/tablet.png)
+![Layout tablet](/src/assets/readme_images/tablet2.png)
+
+### Mobile
+
+![Layout mobile](/src/assets/readme_images/mobile.png)
+![Layout mobile](/src/assets/readme_images/mobile2.png)
 
 ## Links
 
