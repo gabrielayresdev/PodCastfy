@@ -94,6 +94,7 @@
     }
 
     @media (max-width: 768px) {
+      @apply min-h-[400px];
       .tableHeader {
         grid-template-columns: 1fr;
         p {
@@ -102,6 +103,10 @@
             display: block;
           }
         }
+      }
+
+      .button {
+        @apply mb-20;
       }
     }
   }

@@ -24,7 +24,7 @@ const TableItem = ({ episode }) => {
         {Format.timeFormat(episode.duration_ms)}
       </p>
 
-      <div>
+      <div style={window.screen.width < 768 ? { display: "none" } : null}>
         <Play
           midia={{
             url: episode.audio_preview_url,

@@ -8,6 +8,7 @@ import wall from "/src/assets/wall.png";
 import returnIcon from "/src/assets/return.png";
 import Format from "../../helper/format";
 import Loading from "../../helper/Loading";
+import Play from "../../Shared/Play";
 
 const Episode = () => {
   const { id } = useParams();
@@ -34,18 +35,17 @@ const Episode = () => {
           </div>
           <img src={wall} alt="" />
           <div className={styles.play}>
-            <svg
-              width="10"
-              height="12"
-              viewBox="0 0 10 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.666748 0.166687V11.8334L9.83342 6.00002L0.666748 0.166687Z"
-                fill="#04D361"
-              />
-            </svg>
+            <Play
+              midia={{
+                url: data.audio_preview_url,
+                img: data.images[1].url,
+                name: data.name,
+              }}
+              containerStyle={
+                "bg-[#04D361] min-w-[48px] rounded-[.75rem] hover:bg-[#00e768] outline-none"
+              }
+              svgStyle="fill-[#fff]"
+            />
           </div>
         </div>
 

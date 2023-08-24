@@ -23,21 +23,9 @@
     }
 
     .play {
-      @apply absolute top-1/2 bg-[#04D361] right-0  min-h-[48px] aspect-square flex items-center justify-center;
+      @apply absolute right-0 aspect-square;
 
       transform: translate3d(50%, -50%, 0);
-
-      svg {
-        min-width: 40%;
-        min-height: 40%;
-        path {
-          fill: #fff;
-        }
-      }
-
-      &:hover {
-        background-color: #00e768;
-      }
     }
   }
 

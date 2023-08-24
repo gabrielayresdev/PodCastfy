@@ -90,12 +90,19 @@
       }
 
       .podcast_info {
+        @apply flex items-center flex-1 gap-4;
         .image_container {
           @apply w-10 rounded-md border-[#e6e6e6b9];
 
           p {
             @apply hidden;
           }
+        }
+        h2 {
+          @apply block  m-0 max-w-[50ch];
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
 
@@ -125,5 +132,13 @@
 
   @media (max-width: 768px) {
     @apply py-8;
+
+    &.preview {
+      .podcast_info {
+        h2 {
+          @apply max-w-[15ch];
+        }
+      }
+    }
   }
 }
