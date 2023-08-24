@@ -15,20 +15,6 @@
   p {
     @apply text-[#808080];
   }
-  .play {
-    @apply w-[40px] aspect-square rounded-md border-[1px] border-[#ddd]   flex items-center justify-center duration-500 cursor-pointer;
-
-    &:hover {
-      background-color: #04d361;
-      border: none;
-      svg {
-        path {
-          fill: #ffffff;
-          transition: all 0.5s;
-        }
-      }
-    }
-  }
 
   &:hover {
     @apply bg-[#efefef];
@@ -38,8 +24,7 @@
     grid-template-columns: auto 1fr;
     width: 100%;
 
-    p,
-    .play {
+    p {
       display: none;
     }
     .title {

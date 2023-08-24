@@ -5,10 +5,17 @@ import playArrow from "/src/assets/play_arrow.png";
 import shuffle from "/src/assets/Group.png";
 import repeat from "/src/assets/Repeat,Rotate.png";
 import play from "/src/assets/play-player.svg";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import Format from "../../helper/format";
 
 const Player = () => {
   const isMobile = window.screen.width <= 1024;
   const [isOpen, setIsOpen] = React.useState(false);
+  const global = React.useContext(GlobalContext);
+  const [time, setTime] = React.useState(0);
+  const [duration, setDuration] = React.useState(0);
+  const intervalRef = React.useRef();
+  const [playing, setPlaying] = React.useState(false);
 
   function handleClick() {
     if (isMobile) {
@@ -17,6 +24,25 @@ const Player = () => {
       }
     }
   }
+
+  React.useEffect(() => {
+    intervalRef.current ? clearTimeout(intervalRef.current) : null;
+    if (playing) {
+      intervalRef.current = setTimeout(() => {
+        setTime(time + 1);
+      }, 1000);
+    }
+  }, [time, playing]);
+
+  React.useEffect(() => {
+    setTime(0);
+    if (global.midia) {
+      setPlaying(true);
+      global.midia.addEventListener("loadedmetadata", (e) => {
+        setDuration(Math.round(e.target.duration));
+      });
+    }
+  }, [global.midia]);
 
   return (
     <div
@@ -34,30 +60,43 @@ const Player = () => {
       </div>
       <h2>Tocando agora</h2>
       <div className={styles.image_container}>
-        <p>
-          Selecione um <br /> podcast para ouvir
-        </p>
-        <img src={""} alt="" className={styles.podcast_image} />
+        {global.playerData ? (
+          <img
+            src={global.playerData.img}
+            alt=""
+            className={styles.podcast_image}
+          />
+        ) : (
+          <p>
+            Selecione um <br /> podcast para ouvir
+          </p>
+        )}
       </div>
 
       <div className={styles.bottom}>
         <div className={styles.progress}>
-          <p className={styles.duration}>00:00</p>
+          <p className={styles.duration}>{Format.durationFormat(time)}</p>
           <span className={styles.bar}></span>
-          <p className={styles.duration}>00:00</p>
+          <p className={styles.duration}>{Format.durationFormat(duration)}</p>
         </div>
         <div className={styles.controls}>
           <span className={styles.controls_icon}>
             <img src={shuffle} alt="" />
           </span>
-          <span className={styles.controls_icon} data-previous>
-            <img src={playArrow} alt="" />
-          </span>
-          <span className={styles.play}>
-            <img src={play} alt="" />
-          </span>
-          <span className={styles.controls_icon} id="next">
-            <img src={playArrow} alt="" />
+          <span
+            className={styles.play}
+            onClick={() => {
+              if (global.midia) {
+                if (playing) {
+                  global.midia.pause();
+                } else {
+                  global.midia.play();
+                }
+                setPlaying((current) => !current);
+              }
+            }}
+          >
+            {playing ? <img src={pause} /> : <img src={play} />}
           </span>
           <span className={styles.controls_icon}>
             <img src={repeat} alt="" />

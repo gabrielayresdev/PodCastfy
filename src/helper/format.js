@@ -16,6 +16,15 @@ export default class Format {
     }
   }
 
+  static durationFormat(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+
+    return `${hours ? String(hours).padStart(2, "0") + ":" : ""}${
+      minutes ? String(minutes).padStart(2, "0") : "00"
+    }:${String(seconds - minutes * 60).padStart(2, "0")}`;
+  }
+
   static dateFormat(d) {
     const actualDate = new Date();
     const actualYear = actualDate.getFullYear();

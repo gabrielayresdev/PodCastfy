@@ -7,7 +7,9 @@ export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
   const { state, setState } = useLocalStorage("podcasts", []);
-  const { data, error, loading, request } = useFetch();
+  const { data, error, request } = useFetch();
+  const [midia, setMidia] = React.useState();
+  const [playerData, setPlayerData] = React.useState();
 
   React.useEffect(() => {
     const { url, options } = getToken();
@@ -30,12 +32,29 @@ export const GlobalStorage = ({ children }) => {
     setState(auxArr);
   }
 
+  /*  React.useEffect(() => {
+    midiaRef.current = midia;
+    console.log(midiaRef);
+    if (midia) {
+      midia.play();
+    }
+  }, [midia]); */
+
   // Fazer página de erro
   if (error) return null;
   else if (data)
     return (
       <GlobalContext.Provider
-        value={{ state, savePodcast, deletePodcast, data }}
+        value={{
+          state,
+          savePodcast,
+          deletePodcast,
+          data,
+          midia,
+          setMidia,
+          playerData,
+          setPlayerData,
+        }}
       >
         {children}
       </GlobalContext.Provider>
