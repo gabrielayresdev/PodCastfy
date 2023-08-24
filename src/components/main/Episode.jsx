@@ -12,13 +12,13 @@ import Play from "../../Shared/Play";
 
 const Episode = () => {
   const { id } = useParams();
-  const { data, error, loading, request } = useFetch();
+  const { data, loading, request } = useFetch();
   const global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
     const { url, options } = getEpisode(id, global.data.access_token);
     request(url, options);
-  }, [request, id]);
+  }, [request, id, global.data.access_token]);
 
   if (loading) return <Loading />;
   if (data)

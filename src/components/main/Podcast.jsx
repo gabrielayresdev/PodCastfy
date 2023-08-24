@@ -29,6 +29,10 @@ const Podcast = () => {
   }, [request, global.data, id]);
 
   React.useEffect(() => {
+    setEpisodes([]);
+  }, [id]);
+
+  React.useEffect(() => {
     if (data) {
       const img = new Image();
       img.src = data.images[1].url ? data.images[1].url : data.images[0].url;
