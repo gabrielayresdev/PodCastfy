@@ -1,12 +1,11 @@
 import React from "react";
 import styles from "./Player.module.scss";
 import pause from "/src/assets/pause.svg";
-import playArrow from "/src/assets/play_arrow.png";
-import shuffle from "/src/assets/Group.png";
-import repeat from "/src/assets/Repeat,Rotate.png";
 import play from "/src/assets/play-player.svg";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import Format from "../../helper/format";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 const Player = () => {
   const isMobile = window.screen.width <= 1024;
@@ -14,7 +13,6 @@ const Player = () => {
   const global = React.useContext(GlobalContext);
   const [time, setTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
-  const intervalRef = React.useRef();
   const [playing, setPlaying] = React.useState(false);
 
   function handleClick() {
@@ -26,23 +24,22 @@ const Player = () => {
   }
 
   React.useEffect(() => {
-    intervalRef.current ? clearTimeout(intervalRef.current) : null;
-    if (playing) {
-      intervalRef.current = setTimeout(() => {
-        setTime(time + 1);
-      }, 1000);
-    }
-  }, [time, playing]);
-
-  React.useEffect(() => {
     setTime(0);
     if (global.midia) {
+      global.midia.addEventListener("timeupdate", () => {
+        setTime(Math.floor(global.midia.currentTime));
+      });
       setPlaying(true);
       global.midia.addEventListener("loadedmetadata", (e) => {
         setDuration(Math.round(e.target.duration));
       });
     }
   }, [global.midia]);
+
+  function changeCurrentTime(newTime) {
+    global.midia.currentTime = newTime;
+    setTime(global.midia.currentTime);
+  }
 
   return (
     <div
@@ -59,30 +56,46 @@ const Player = () => {
         </svg>
       </div>
       <h2>Tocando agora</h2>
-      <div className={styles.image_container}>
-        {global.playerData ? (
-          <img
-            src={global.playerData.img}
-            alt=""
-            className={styles.podcast_image}
-          />
-        ) : (
-          <p>
-            Selecione um <br /> podcast para ouvir
-          </p>
-        )}
+      <div className={styles.podcast_info}>
+        <div
+          className={styles.image_container}
+          style={global.playerData ? { border: "none" } : null}
+        >
+          {global.playerData ? (
+            <img
+              src={global.playerData.img}
+              alt=""
+              className={styles.podcast_image}
+            />
+          ) : (
+            <p>
+              Selecione um <br /> podcast para ouvir
+            </p>
+          )}
+        </div>
+        <h2 className={styles.title}>{global.playerData?.name}</h2>
       </div>
 
       <div className={styles.bottom}>
         <div className={styles.progress}>
-          <p className={styles.duration}>{Format.durationFormat(time)}</p>
-          <span className={styles.bar}></span>
+          <p className={styles.duration}>
+            {global.midia ? Format.durationFormat(time) : "00:00"}
+          </p>
+          {global.playerData && duration ? (
+            <Slider
+              trackStyle={{ background: "#04d361" }}
+              railStyle={{ background: "#9f75ff" }}
+              handleStyle={{ borderColor: "#04d361", borderWidth: 4 }}
+              max={duration}
+              value={time}
+              onChange={changeCurrentTime}
+            />
+          ) : (
+            <span className={styles.bar}></span>
+          )}
           <p className={styles.duration}>{Format.durationFormat(duration)}</p>
         </div>
         <div className={styles.controls}>
-          <span className={styles.controls_icon}>
-            <img src={shuffle} alt="" />
-          </span>
           <span
             className={styles.play}
             onClick={() => {
@@ -97,9 +110,6 @@ const Player = () => {
             }}
           >
             {playing ? <img src={pause} /> : <img src={play} />}
-          </span>
-          <span className={styles.controls_icon}>
-            <img src={repeat} alt="" />
           </span>
         </div>
       </div>

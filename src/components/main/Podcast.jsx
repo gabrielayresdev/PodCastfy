@@ -26,7 +26,7 @@ const Podcast = () => {
       const { url, options } = getPodcast(id, token);
       request(url, options);
     }
-  }, [request, global, id]);
+  }, [request, global.data, id]);
 
   React.useEffect(() => {
     if (data) {

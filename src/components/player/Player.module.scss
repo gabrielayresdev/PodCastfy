@@ -2,16 +2,28 @@
 
 .player {
   @apply h-full w-full bg-[#8257E5] px-[15%] pt-[3rem] pb-[4rem] flex flex-col justify-between items-center;
+
+  .close {
+    @apply hidden;
+  }
+
   h2 {
     @apply text-white font-bold tracking-[1px];
   }
 
-  .image_container {
-    @apply w-full aspect-square bg-[#9F75FF] flex items-center justify-center text-center text-white font-bold rounded-3xl border-dashed border-[#e6e6e666] border-[2px] tracking-[1px] relative overflow-hidden;
+  .podcast_info {
+    @apply w-full;
+    .image_container {
+      @apply w-full aspect-square bg-[#9F75FF] flex items-center justify-center text-center text-white font-bold rounded-3xl border-dashed border-[#e6e6e666] border-[2px] tracking-[1px] relative overflow-hidden;
 
-    /* img {
-      @apply w-full h-full absolute z-10 top-0 left-0;
-    } */
+      /* img {
+        @apply w-full h-full absolute z-10 top-0 left-0;
+      } */
+    }
+
+    .title {
+      @apply text-[1.25rem] font-semibold text-center mt-4;
+    }
   }
 
   .bottom {
@@ -29,7 +41,7 @@
     }
 
     .controls {
-      @apply flex items-center justify-between w-full;
+      @apply flex items-center justify-center w-full;
 
       .controls_icon {
         @apply opacity-50 cursor-pointer duration-300;
@@ -58,7 +70,7 @@
     animation: 0.5s openPlayer ease-in-out forwards;
 
     .close {
-      @apply absolute right-0 top-0 px-3 py-2;
+      @apply absolute right-0 top-0 px-3 py-2 block;
 
       svg {
         @apply min-w-[20px] fill-[#fff];
@@ -77,11 +89,13 @@
         @apply hidden;
       }
 
-      .image_container {
-        @apply w-10 rounded-md border-[#e6e6e6b9];
+      .podcast_info {
+        .image_container {
+          @apply w-10 rounded-md border-[#e6e6e6b9];
 
-        p {
-          @apply hidden;
+          p {
+            @apply hidden;
+          }
         }
       }
 
